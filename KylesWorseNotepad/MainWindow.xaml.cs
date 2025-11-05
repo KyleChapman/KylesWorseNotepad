@@ -146,6 +146,9 @@ namespace KylesWorseNotepad
             }
         }
 
+        /// <summary>
+        /// Loads a file.
+        /// </summary>
         private void LoadClick(object sender, RoutedEventArgs e)
         {
             // Create the dialog with whatever properties we intend to use.
