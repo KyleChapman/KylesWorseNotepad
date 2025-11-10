@@ -9,6 +9,7 @@ using Microsoft.Win32;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace KylesWorseNotepad
 {
@@ -24,6 +25,9 @@ namespace KylesWorseNotepad
         {
             InitializeComponent();
             textEverything.Focus();
+
+            AddKeyBinding(this, Key.S, ModifierKeys.Control, SaveClick);
+            AddKeyBinding(this, Key.X, ModifierKeys.Control, ExitClick);
         }
 
         /// <summary>
@@ -189,6 +193,21 @@ namespace KylesWorseNotepad
                         "\nStack Trace: " + error.StackTrace, "File Load Error");
                 }
             }
+        }
+
+        /// <summary>
+        /// Adds a keybind to a UI element. The callback signature should be (object, RoutedEventargs);
+        /// Created by Michael Millar.
+        /// </summary>
+        /// <param name="element">The control to add the binding(s) to.</param>
+        /// <param name="key">The keypress.</param>
+        /// <param name="mod">The key modifier (e.g. Ctrl, Alt...)</param>
+        /// <param name="callback">The event handler.</param>
+        public static void AddKeyBinding(UIElement element, Key key, ModifierKeys mod, ExecutedRoutedEventHandler callback)
+        {
+            RoutedCommand newCommand = new();
+            element.CommandBindings.Add(new CommandBinding(newCommand, callback));
+            element.InputBindings.Add(new KeyBinding(newCommand, key, mod));
         }
     }
 }

@@ -18,18 +18,32 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
             <RowDefinition/>
             <RowDefinition Height="35"/>
         </Grid.RowDefinitions>
 
-        <!-- Row 0: Just a box.-->
-        <TextBox x:Name="textEverything" Grid.ColumnSpan="4" Margin="2" TextWrapping="Wrap" AcceptsReturn="True" TextChanged="TextModified"/>
+        <!-- Row 0: MenuBar -->
+        <Menu Grid.ColumnSpan="4">
+            <MenuItem Header="_File" ToolTip="Provides options relating to file management">
+                <MenuItem Header="_Save" ToolTip="Save the file" Click="SaveClick" InputGestureText="Ctrl+S" />
+                <MenuItem Header="_Load" ToolTip="Load a file" Click="LoadClick"/>
+                <Separator />
+                <MenuItem Header="Exit" ToolTip="Exit the program" Click="ExitClick" InputGestureText="Ctrl+X"/>
+            </MenuItem>
+            <MenuItem Header="_Edit" ToolTip="Provided options for editing the text">
+                <MenuItem Header="_Clear" ToolTip="Clears all the text" Click="ClearClick"/>
+            </MenuItem>
+        </Menu>
+        
+        <!-- Row 1: Just a box.-->
+        <TextBox x:Name="textEverything" Grid.Row="1" Grid.ColumnSpan="4" Margin="2" TextWrapping="Wrap" AcceptsReturn="True" TextChanged="TextModified"/>
 
-        <!-- Row 1: Buttons. -->
-        <Button x:Name="buttonSave" Content="_Save" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" MinWidth="60" Margin="3" ToolTip="Click to save your text" Click="SaveClick"/>
-        <Button x:Name="buttonLoad" Content="_Load" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" MinWidth="60" Margin="3" ToolTip="Click to load some text" Click="LoadClick"/>
-        <Button x:Name="buttonClear" Content="Clea_r" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" MinWidth="60" Margin="3" ToolTip="Click to completely clear the text" Click="ClearClick"/>
-        <Button x:Name="buttonExit" Content="E_xit" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Center" MinWidth="60" Margin="3" ToolTip="Click to exit the program" Click="ExitClick"/>
+        <!-- Row 2: Buttons. -->
+        <Button x:Name="buttonSave" Content="_Save" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" MinWidth="60" Margin="3" ToolTip="Click to save your text" Click="SaveClick"/>
+        <Button x:Name="buttonLoad" Content="_Load" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" MinWidth="60" Margin="3" ToolTip="Click to load some text" Click="LoadClick"/>
+        <Button x:Name="buttonClear" Content="Clea_r" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" MinWidth="60" Margin="3" ToolTip="Click to completely clear the text" Click="ClearClick"/>
+        <Button x:Name="buttonExit" Content="E_xit" Grid.Row="2" Grid.Column="3" HorizontalAlignment="Center" MinWidth="60" Margin="3" ToolTip="Click to exit the program" Click="ExitClick"/>
 
     </Grid>
 </Window>
